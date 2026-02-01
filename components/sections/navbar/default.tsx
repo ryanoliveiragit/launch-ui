@@ -92,6 +92,7 @@ export default function Navbar() {
                   <a href={siteConfig.links.github}>GitHub</a>
                   <a href={siteConfig.links.discord}>Discord</a>
                   <a href={siteConfig.termsOfUseUrl}>Termos de Uso</a>
+                  <a href={siteConfig.privacyPolicyUrl}>Política de Privacidade</a>
                 </nav>
               </SheetContent>
             </Sheet>

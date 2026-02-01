@@ -44,13 +44,13 @@ export default function Pricing({
       cta: {
         variant: "default",
         label: "Get all-access",
-        href: siteConfig.pricing.pro,
+        href: "/checkout/pro",
       },
       features: [
-        `${siteConfig.stats.presets} templates`,
-        `${siteConfig.stats.modulos} blocks and sections`,
-        `${siteConfig.stats.isos} illustrations`,
-        `${siteConfig.stats.integracoes} custom animations`,
+        "100 templates",
+        "1000 blocks and sections",
+        "1000 illustrations",
+        "1000 custom animations",
       ],
       variant: "glow-brand",
     },
@@ -63,7 +63,7 @@ export default function Pricing({
       cta: {
         variant: "default",
         label: "Get all-access for your team",
-        href: siteConfig.pricing.team,
+        href: "/checkout/team",
       },
       features: [
         "All the templates, components and sections available for your entire team",

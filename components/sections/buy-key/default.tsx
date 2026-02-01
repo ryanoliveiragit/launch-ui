@@ -17,7 +17,7 @@ const plans = [
     price: "19",
     period: "/mês",
     features: ["Acesso a todas as otimizações", "Atualizações inclusas", "Suporte por Discord"],
-    href: `${siteConfig.checkoutBaseUrl}/mensal`,
+    href: "/checkout/mensal",
     featured: false,
   },
   {
@@ -26,7 +26,7 @@ const plans = [
     price: "149",
     period: "/ano",
     features: ["Tudo do Mensal", "2 meses grátis", "Prioridade no suporte"],
-    href: `${siteConfig.checkoutBaseUrl}/anual`,
+    href: "/checkout/anual",
     featured: true,
   },
   {
@@ -35,7 +35,7 @@ const plans = [
     price: "299",
     period: " única",
     features: ["Acesso vitalício", "Todas as atualizações", "Suporte prioritário"],
-    href: `${siteConfig.checkoutBaseUrl}/lifetime`,
+    href: "/checkout/lifetime",
     featured: false,
   },
 ];

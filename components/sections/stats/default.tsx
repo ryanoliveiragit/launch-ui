@@ -18,22 +18,22 @@ export default function Stats({
   items = [
     {
       label: "",
-      value: siteConfig.stats.presets,
+      value: "100",
       description: "presets de otimização (Básico, Intermediário, Avançado)",
     },
     {
       label: "",
-      value: siteConfig.stats.modulos,
+      value: "100",
       description: "módulos avançados (Kernel, CPU, Memória, GPU, I/O, Rede)",
     },
     {
       label: "",
-      value: siteConfig.stats.isos,
+      value: "100",
       description: "ISOs de Windows otimizadas",
     },
     {
       label: "",
-      value: siteConfig.stats.integracoes,
+      value: "100",
       description: "integrações (FPS Ultra, Process Lasso, Rede, ISOs)",
     },
   ],

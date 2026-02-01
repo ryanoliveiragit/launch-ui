@@ -62,8 +62,14 @@ export default function TermosPage() {
             </h2>
             <p>
               Respeitamos sua privacidade. O que coletamos e como usamos dados
-              está descrito em nossa política de privacidade. Ao usar o Synapse,
-              você também aceita essa política.
+              está descrito em nossa{" "}
+              <Link
+                href={siteConfig.privacyPolicyUrl}
+                className="text-foreground underline hover:no-underline"
+              >
+                Política de Privacidade
+              </Link>
+              . Ao usar o Synapse, você também aceita essa política.
             </p>
           </section>
 
@@ -94,12 +100,18 @@ export default function TermosPage() {
           </section>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 flex flex-wrap gap-6">
           <Link
             href="/"
             className="text-muted-foreground hover:text-foreground text-sm font-medium"
           >
             ← Voltar ao início
+          </Link>
+          <Link
+            href={siteConfig.privacyPolicyUrl}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium"
+          >
+            Política de Privacidade
           </Link>
         </div>
       </Section>

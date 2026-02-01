@@ -7,6 +7,8 @@ export const siteConfig = {
   docsInstallUrl: "/docs/instalacao",
   /** Página de Termos de Uso (campo obrigatório para download/registro) */
   termsOfUseUrl: "/termos",
+  /** Página de Política de Privacidade */
+  privacyPolicyUrl: "/privacidade",
   ogImage: "https://synapse.app/og.jpg",
   description:
     "Seu app de otimização e seu sistema operacional. Windows otimizado para entusiastas e jogadores.",

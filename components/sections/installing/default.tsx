@@ -61,7 +61,7 @@ export default function Installing() {
                 <h3 className="text-xl font-semibold">Downloads</h3>
                 <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
                   Libere o botão de download marcando que você está seguindo o
-                  guia e que aceitou os Termos de Uso.
+                  guia e que aceitou os Termos de Uso e a Política de Privacidade.
                 </p>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -107,6 +107,13 @@ export default function Installing() {
                         className="text-foreground underline hover:no-underline"
                       >
                         Termos de Uso
+                      </Link>{" "}
+                      e a{" "}
+                      <Link
+                        href={siteConfig.privacyPolicyUrl}
+                        className="text-foreground underline hover:no-underline"
+                      >
+                        Política de Privacidade
                       </Link>
                       .
                     </span>

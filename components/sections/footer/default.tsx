@@ -69,6 +69,12 @@ export default function FooterSection() {
               >
                 Termos de Uso
               </Link>
+              <Link
+                href={siteConfig.privacyPolicyUrl}
+                className="text-muted-foreground text-sm hover:text-foreground"
+              >
+                Política de Privacidade
+              </Link>
             </FooterColumn>
           </FooterContent>
           <FooterBottom>
