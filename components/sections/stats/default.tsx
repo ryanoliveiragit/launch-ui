@@ -17,65 +17,52 @@ interface StatsProps {
 export default function Stats({
   items = [
     {
-      label: "used by",
-      value: Math.round(siteConfig.stats.figma / 100) / 10,
-      suffix: "k",
-      description: "designers on Figma Community",
+      label: "",
+      value: siteConfig.stats.presets,
+      description: "presets de otimização (Básico, Intermediário, Avançado)",
     },
     {
-      label: "over",
-      value: siteConfig.stats.github,
-      description: "clones and forks of the template on Github",
+      label: "",
+      value: siteConfig.stats.modulos,
+      description: "módulos avançados (Kernel, CPU, Memória, GPU, I/O, Rede)",
     },
     {
-      label: "already",
-      value: Math.round(siteConfig.stats.cli / 100) / 10,
-      suffix: "k",
-      description: "installations with shadcn/ui CLI",
+      label: "",
+      value: siteConfig.stats.isos,
+      description: "ISOs de Windows otimizadas",
     },
     {
-      label: "includes",
-      value: siteConfig.stats.sections,
-      description: "blocks and sections",
+      label: "",
+      value: siteConfig.stats.integracoes,
+      description: "integrações (FPS Ultra, Process Lasso, Rede, ISOs)",
     },
   ],
   className,
 }: StatsProps) {
   return (
     <Section className={className}>
-      <div className="container mx-auto max-w-[960px]">
-        {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
-            {items.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-start gap-3 text-left"
-              >
-                {item.label && (
-                  <div className="text-muted-foreground text-sm font-semibold">
-                    {item.label}
-                  </div>
-                )}
-                <div className="flex items-baseline gap-2">
-                  <div className="from-foreground to-foreground dark:to-brand bg-linear-to-r bg-clip-text text-4xl font-medium text-transparent drop-shadow-[2px_1px_24px_var(--brand-foreground)] transition-all duration-300 sm:text-5xl md:text-6xl">
-                    {item.value}
-                  </div>
-                  {item.suffix && (
-                    <div className="text-brand text-2xl font-semibold">
-                      {item.suffix}
-                    </div>
-                  )}
-                </div>
-                {item.description && (
-                  <div className="text-muted-foreground text-sm font-semibold text-pretty">
-                    {item.description}
-                  </div>
-                )}
+      {items !== false && items.length > 0 && (
+        <div className="glass-liquid mx-auto flex max-w-4xl flex-wrap justify-center gap-8 rounded-2xl px-8 py-10 sm:gap-12 sm:px-12">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center gap-2 text-center"
+            >
+              <div className="from-foreground to-foreground dark:to-brand bg-linear-to-r bg-clip-text text-3xl font-semibold text-transparent sm:text-4xl">
+                {item.value}
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+              {item.suffix && (
+                <span className="text-brand text-lg font-medium">{item.suffix}</span>
+              )}
+              {item.description && (
+                <p className="text-muted-foreground max-w-[200px] text-sm">
+                  {item.description}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </Section>
   );
 }

@@ -21,10 +21,10 @@ export default function Pricing({
       name: "Free",
       description: "For everyone starting out on a website for their big idea",
       price: 0,
-      priceNote: "Free and open-source forever. Get started now.",
+      priceNote: "Grátis e de código aberto para sempre. Comece agora.",
       cta: {
         variant: "glow",
-        label: "Get started for free",
+        label: "Começar agora",
         href: "/docs/getting-started/introduction",
       },
       features: [
@@ -47,10 +47,10 @@ export default function Pricing({
         href: siteConfig.pricing.pro,
       },
       features: [
-        `${siteConfig.stats.templates} templates`,
-        `${siteConfig.stats.sections} blocks and sections`,
-        `${siteConfig.stats.illustrations} illustrations`,
-        `${siteConfig.stats.animations} custom animations`,
+        `${siteConfig.stats.presets} templates`,
+        `${siteConfig.stats.modulos} blocks and sections`,
+        `${siteConfig.stats.isos} illustrations`,
+        `${siteConfig.stats.integracoes} custom animations`,
       ],
       variant: "glow-brand",
     },

@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { ReactNode } from "react";
 
-import { Item, ItemDescription,ItemIcon, ItemTitle } from "../../ui/item";
+import { Item, ItemDescription, ItemIcon, ItemTitle } from "../../ui/item";
 import { Section } from "../../ui/section";
 
 interface ItemProps {
@@ -20,13 +20,19 @@ interface ItemProps {
 }
 
 interface ItemsProps {
+  id?: string;
   title?: string;
+  description?: string;
+  imageBlock?: ReactNode;
   items?: ItemProps[] | false;
   className?: string;
 }
 
 export default function Items({
+  id,
   title = "Everything you need. Nothing you don't.",
+  description,
+  imageBlock,
   items = [
     {
       title: "Accessibility first",
@@ -75,20 +81,33 @@ export default function Items({
   className,
 }: ItemsProps) {
   return (
-    <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-6 sm:gap-20">
-        <h2 className="max-w-[560px] text-center text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
-          {title}
-        </h2>
+    <Section id={id} className={className}>
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 text-center sm:gap-16">
+        <div className="flex flex-col items-center gap-4">
+          <h2 className="max-w-2xl text-2xl font-semibold leading-tight sm:text-4xl md:text-5xl">
+            {title}
+          </h2>
+          {description && (
+            <p className="text-muted-foreground max-w-xl text-base font-medium sm:text-lg">
+              {description}
+            </p>
+          )}
+        </div>
+        {imageBlock && <div className="w-full max-w-3xl">{imageBlock}</div>}
         {items !== false && items.length > 0 && (
-          <div className="grid auto-rows-fr grid-cols-2 gap-0 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+          <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item, index) => (
-              <Item key={index}>
+              <Item
+                key={index}
+                className="glass-liquid rounded-2xl p-5 text-left"
+              >
                 <ItemTitle className="flex items-center gap-2">
                   <ItemIcon>{item.icon}</ItemIcon>
                   {item.title}
                 </ItemTitle>
-                <ItemDescription>{item.description}</ItemDescription>
+                <ItemDescription className="max-w-none">
+                  {item.description}
+                </ItemDescription>
               </Item>
             ))}
           </div>

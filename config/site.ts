@@ -1,31 +1,26 @@
 export const siteConfig = {
-  name: "Launch UI",
-  url: "https://launchuicomponents.com",
-  getStartedUrl:
-    "https://launchuicomponents.com/docs/getting-started/introduction",
-  ogImage: "https://launchuicomponents.com/og.jpg",
+  name: "Synapse",
+  url: "https://synapse.app",
+  getStartedUrl: "https://synapse.app/download",
+  docsUrl: "https://docs.synapse.app",
+  /** Guia de instalação (abre em nova aba, estilo documentação) */
+  docsInstallUrl: "/docs/instalacao",
+  /** Página de Termos de Uso (campo obrigatório para download/registro) */
+  termsOfUseUrl: "/termos",
+  ogImage: "https://synapse.app/og.jpg",
   description:
-    "Landing page components built with React, Shadcn/ui and Tailwind that will make your website feel premium.",
+    "Seu app de otimização e seu sistema operacional. Windows otimizado para entusiastas e jogadores.",
   links: {
-    twitter: "https://twitter.com/mikolajdobrucki",
-    github: "https://github.com/launch-ui/launch-ui",
-    email: "mailto:contact@mikolajdobrucki.com",
+    twitter: "https://twitter.com/synapse",
+    github: "https://github.com/synapse",
+    discord: "https://discord.gg/synapse",
+    email: "mailto:contato@synapse.app",
+    /** Suporte / Doação (estilo AtlasOS "Support us") */
+    support: "https://ko-fi.com/synapse",
   },
-  pricing: {
-    pro: "https://launchui.lemonsqueezy.com/buy/b4798c68-c858-4c34-860b-069b5a0d6c4e",
-    team: "https://launchui.lemonsqueezy.com/buy/130d8cfe-e123-464b-9f67-c74c5fedfb45",
-  },
-  stats: {
-    figma: 7693,
-    github: 1829,
-    cli: 16493,
-    total: "26.1k+",
-    updated: "13 Jan 2026",
-    sections: 74,
-    illustrations: 23,
-    animations: 15,
-    templates: 7,
-  },
+  /** Versão exibida no hero (estilo AtlasOS) */
+  version: "v0.5.0",
+  versionDate: "Outubro 2025",
 };
 
 export type SiteConfig = typeof siteConfig;

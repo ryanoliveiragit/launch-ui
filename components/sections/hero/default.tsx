@@ -1,127 +1,68 @@
-import { type VariantProps } from "class-variance-authority";
-import { ArrowRightIcon } from "lucide-react";
-import { ReactNode } from "react";
+import Image from "next/image";
+import { Star } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import Github from "../../logos/github";
 import { Badge } from "../../ui/badge";
-import { Button, buttonVariants } from "../../ui/button";
-import Glow from "../../ui/glow";
-import { Mockup, MockupFrame } from "../../ui/mockup";
-import Screenshot from "../../ui/screenshot";
+import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
 
-interface HeroButtonProps {
-  href: string;
-  text: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-}
+/** Placeholder: substitua por screenshot real do seu app */
+const HERO_IMAGE =
+  "https://picsum.photos/seed/synapse-hero/1200/700";
 
-interface HeroProps {
-  title?: string;
-  description?: string;
-  mockup?: ReactNode | false;
-  badge?: ReactNode | false;
-  buttons?: HeroButtonProps[] | false;
-  className?: string;
-}
-
-export default function Hero({
-  title = "Give your big idea the design it deserves",
-  description = "Professionally designed blocks and templates built with React, Shadcn/ui and Tailwind that will help your product stand out.",
-  mockup = (
-    <Screenshot
-      srcLight="/dashboard-light.png"
-      srcDark="/dashboard-dark.png"
-      alt="Launch UI app screenshot"
-      width={1248}
-      height={765}
-      className="w-full"
-    />
-  ),
-  badge = (
-    <Badge variant="outline" className="animate-appear">
-      <span className="text-muted-foreground">
-        New version of Launch UI is out!
-      </span>
-      <a href={siteConfig.getStartedUrl} className="flex items-center gap-1">
-        Get started
-        <ArrowRightIcon className="size-3" />
-      </a>
-    </Badge>
-  ),
-  buttons = [
-    {
-      href: siteConfig.getStartedUrl,
-      text: "Get Started",
-      variant: "default",
-    },
-    {
-      href: siteConfig.links.github,
-      text: "Github",
-      variant: "glow",
-      icon: <Github className="mr-2 size-4" />,
-    },
-  ],
-  className,
-}: HeroProps) {
+export default function Hero() {
   return (
-    <Section
-      className={cn(
-        "fade-bottom overflow-hidden pb-0 sm:pb-0 md:pb-0",
-        className,
-      )}
-    >
-      <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
-        <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
-          {badge !== false && badge}
-          <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
-            {title}
-          </h1>
-          <p className="text-md animate-appear text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance opacity-0 delay-100 sm:text-xl">
-            {description}
-          </p>
-          {buttons !== false && buttons.length > 0 && (
-            <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
-              {buttons.map((button, index) => (
-                <Button
-                  key={index}
-                  variant={button.variant || "default"}
-                  size="lg"
-                  asChild
-                >
-                  <a href={button.href}>
-                    {button.icon}
-                    {button.text}
-                    {button.iconRight}
-                  </a>
-                </Button>
-              ))}
+    <Section className={cn("fade-bottom overflow-hidden pb-4 sm:pb-8")}>
+      <div className="mx-auto max-w-6xl px-4 pt-12 sm:pt-16 md:pt-20">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 lg:items-center">
+          <div className="lg:col-span-6">
+            <p className="text-brand mb-4 text-sm font-semibold uppercase tracking-wider">
+              App + Sistema operacional
+            </p>
+            <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground max-w-xl bg-linear-to-r bg-clip-text text-4xl font-bold leading-[1.1] text-balance text-transparent sm:text-5xl md:text-6xl">
+              Seu app. Seu Windows. Otimizados.
+            </h1>
+            <p className="text-muted-foreground animate-appear mt-6 max-w-lg text-balance text-lg leading-relaxed opacity-0 delay-100">
+              O Synapse é o seu app de otimização e, se quiser, um sistema
+              operacional leve: menos bloatware, mais desempenho e privacidade
+              para entusiastas e jogadores.
+            </p>
+            <div className="animate-appear mt-6 opacity-0 delay-200">
+              <Badge variant="outline" className="text-sm font-normal">
+                {siteConfig.version} — {siteConfig.versionDate}
+              </Badge>
             </div>
-          )}
-          {mockup !== false && (
-            <div className="relative w-full pt-12">
-              <MockupFrame
-                className="animate-appear opacity-0 delay-700"
-                size="small"
-              >
-                <Mockup
-                  type="responsive"
-                  className="bg-background/90 w-full rounded-xl border-0"
+            <div className="animate-appear mt-8 flex flex-wrap gap-4 opacity-0 delay-300">
+              <Button variant="default" size="lg" asChild>
+                <a href="#instalacao">Começar</a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href={siteConfig.links.github}
+                  className="flex items-center gap-2"
                 >
-                  {mockup}
-                </Mockup>
-              </MockupFrame>
-              <Glow
-                variant="top"
-                className="animate-appear-zoom opacity-0 delay-1000"
+                  <Star className="size-4" />
+                  Star no GitHub
+                </a>
+              </Button>
+            </div>
+          </div>
+          <div className="relative lg:col-span-6">
+            <div className="animate-appear relative overflow-hidden rounded-2xl border border-border bg-card shadow-xl opacity-0 delay-500">
+              <Image
+                src={HERO_IMAGE}
+                alt="Interface do app Synapse (placeholder — substitua por screenshot real)"
+                width={1200}
+                height={700}
+                className="h-auto w-full object-cover"
+                priority
+                unoptimized
               />
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-border/50" />
             </div>
-          )}
+          </div>
         </div>
       </div>
     </Section>

@@ -1,134 +1,97 @@
-import { type VariantProps } from "class-variance-authority";
+"use client";
+
 import { Menu } from "lucide-react";
-import { ReactNode } from "react";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
-import { Button, buttonVariants } from "../../ui/button";
+import Synapse from "../../logos/synapse";
+import { Button } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
-import Navigation from "../../ui/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 
-interface NavbarLink {
-  text: string;
-  href: string;
-}
+const navLinks = [
+  { text: "App e sistema", href: "#app-e-sistema" },
+  { text: "Instalação", href: "#instalacao" },
+  { text: "Guia (nova aba)", href: siteConfig.docsInstallUrl, newTab: true },
+  { text: "FAQ", href: "#faq" },
+  { text: "Apoie-nos", href: siteConfig.links.support },
+];
 
-interface NavbarActionProps {
-  text: string;
-  href: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-  isButton?: boolean;
-}
-
-interface NavbarProps {
-  logo?: ReactNode;
-  name?: string;
-  homeUrl?: string;
-  mobileLinks?: NavbarLink[];
-  actions?: NavbarActionProps[];
-  showNavigation?: boolean;
-  customNavigation?: ReactNode;
-  className?: string;
-}
-
-export default function Navbar({
-  logo = <LaunchUI />,
-  name = "Launch UI",
-  homeUrl = siteConfig.url,
-  mobileLinks = [
-    { text: "Getting Started", href: siteConfig.url },
-    { text: "Components", href: siteConfig.url },
-    { text: "Documentation", href: siteConfig.url },
-  ],
-  actions = [
-    { text: "Sign in", href: siteConfig.url, isButton: false },
-    {
-      text: "Get Started",
-      href: siteConfig.url,
-      isButton: true,
-      variant: "default",
-    },
-  ],
-  showNavigation = true,
-  customNavigation,
-  className,
-}: NavbarProps) {
+export default function Navbar() {
   return (
-    <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
-      <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
-      <div className="max-w-container relative mx-auto">
+    <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4")}>
+      <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg" />
+      <div className="max-w-6xl relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
             <a
-              href={homeUrl}
+              href="/"
               className="flex items-center gap-2 text-xl font-bold"
             >
-              {logo}
-              {name}
+              <Synapse />
+              {siteConfig.name}
             </a>
-            {showNavigation && (customNavigation || <Navigation />)}
+            <nav className="hidden md:flex items-center gap-6">
+              {navLinks.map((link) => (
+                <a
+                  key={link.text}
+                  href={link.href}
+                  target={link.newTab ? "_blank" : undefined}
+                  rel={link.newTab ? "noopener noreferrer" : undefined}
+                  className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+                >
+                  {link.text}
+                </a>
+              ))}
+            </nav>
           </NavbarLeft>
           <NavbarRight>
-            {actions.map((action, index) =>
-              action.isButton ? (
-                <Button
-                  key={index}
-                  variant={action.variant || "default"}
-                  asChild
-                >
-                  <a href={action.href}>
-                    {action.icon}
-                    {action.text}
-                    {action.iconRight}
-                  </a>
-                </Button>
-              ) : (
-                <a
-                  key={index}
-                  href={action.href}
-                  className="hidden text-sm md:block"
-                >
-                  {action.text}
-                </a>
-              ),
-            )}
+            <a
+              href={siteConfig.links.github}
+              className="text-muted-foreground hover:text-foreground hidden text-sm md:block"
+            >
+              GitHub
+            </a>
+            <a
+              href={siteConfig.links.discord}
+              className="text-muted-foreground hover:text-foreground hidden text-sm md:block"
+            >
+              Discord
+            </a>
+            <Button variant="default" size="sm" asChild>
+              <a href="#instalacao">Começar</a>
+            </Button>
             <Sheet>
               <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="shrink-0 md:hidden"
-                >
+                <Button variant="ghost" size="icon" className="shrink-0 md:hidden">
                   <Menu className="size-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
+                  <span className="sr-only">Menu</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
-                  <a
-                    href={homeUrl}
-                    className="flex items-center gap-2 text-xl font-bold"
-                  >
-                    <span>{name}</span>
+                  <a href="/" className="flex items-center gap-2 text-xl font-bold">
+                    {siteConfig.name}
                   </a>
-                  {mobileLinks.map((link, index) => (
+                  {navLinks.map((link) => (
                     <a
-                      key={index}
+                      key={link.text}
                       href={link.href}
+                      target={link.newTab ? "_blank" : undefined}
+                      rel={link.newTab ? "noopener noreferrer" : undefined}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       {link.text}
                     </a>
                   ))}
+                  <a href={siteConfig.links.github}>GitHub</a>
+                  <a href={siteConfig.links.discord}>Discord</a>
+                  <a href={siteConfig.termsOfUseUrl}>Termos de Uso</a>
                 </nav>
               </SheetContent>
             </Sheet>
